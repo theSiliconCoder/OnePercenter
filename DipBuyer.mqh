@@ -1,13 +1,13 @@
 //+------------------------------------------------------------------+
 //|                                                     DipBuyer.mq5 |
-//|                          Copyright 2024, MoniePilot Capital Labs, UK. |
-//|                                     https://www.MoniePilotcaplabs.com |
+//|                          Copyright 2024, theSiliconCoder |
+//|                                                                |
 //+------------------------------------------------------------------+
 
 // DipBuyer assumes you deploy it during in an uptrend on a 4H chart
 
-#property copyright "Copyright 2024, MoniePilot Capital Labs, UK."
-#property link      "https://www.MoniePilotcaplabs.com"
+#property copyright "Copyright 2024, theSiliconCoder."
+#property link      "https://mql5.com"
 #property version   "1.00"
 //+------------------------------------------------------------------+
 //| Expert initialization function                                   |
