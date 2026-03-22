@@ -440,7 +440,6 @@ void ShowTrendLabel(int trend)
 
 
 
-// double riskMargin = 0.0020;
 
 // @ 6% max DD | 10k - 3, 5k - 1.5, 2.5k - 0.75, 100k - 30  
 
@@ -492,8 +491,6 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
                         _lotSizeAll,    // lot size
                         _Symbol,    // symbol
                         askPrice,        // open price (market price)
-                        // support - (0.5 * riskMargin),         // stop loss
-                        // MathMax(bidPrice - workingRiskMargin, sl),
                         sl,
                         tp,         // take profit
                         "Buy Order");//
@@ -506,8 +503,6 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
             _lotSizeAll,    // lot size
             _Symbol,    // symbol
             askPrice,        // open price (market price)
-            // support - (0.5 * riskMargin),         // stop loss
-            // MathMax(bidPrice - workingRiskMargin, sl),
             sl,
             tp,         // take profit
             "Buy Order");//
@@ -521,8 +516,6 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
             _lotSizeTrailing,    // lot size
             _Symbol,    // symbol
             askPrice,        // open price (market price)
-            // support - (0.5 * riskMargin),         // stop loss
-            // MathMax(bidPrice - workingRiskMargin, sl),
             sl,
             tp,         // take profit
             "Buy Order");//
@@ -530,9 +523,7 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
             result = trade.Buy(
                _lotSizeFixed,    // lot size
                _Symbol,    // symbol
-               askPrice,        // open price (market price)
-               // support - (0.5 * riskMargin),         // stop loss
-               // MathMax(bidPrice - workingRiskMargin, sl),
+               askPrice,        
                sl,
                tp,         // take profit
                "Buy Order");//
@@ -571,8 +562,6 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
                         _lotSizeAll,    // lot size
                         _Symbol,    // symbol
                         bidPrice,        // open price (market price)
-                        // support - (0.5 * riskMargin),         // stop loss
-                        // MathMax(bidPrice - workingRiskMargin, sl),
                         sl,
                         tp,         // take profit
                         "Sell Order");//
@@ -585,8 +574,6 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
             _lotSizeAll,    // lot size
             _Symbol,    // symbol
             bidPrice,        // open price (market price)
-            // support - (0.5 * riskMargin),         // stop loss
-            // MathMax(bidPrice - workingRiskMargin, sl),
             sl,
             tp,         // take profit
             "Sell Order");//
@@ -600,8 +587,6 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
             _lotSizeTrailing,    // lot size
             _Symbol,    // symbol
             bidPrice,        // open price (market price)
-            // support - (0.5 * riskMargin),         // stop loss
-            // MathMax(bidPrice - workingRiskMargin, sl),
             sl,
             tp,         // take profit
             "Sell Order");//
@@ -610,8 +595,6 @@ void placeOrder(bool isBuyOrder, double sl, StrategyConfig &sConfig){
                _lotSizeFixed,    // lot size
                _Symbol,    // symbol
                bidPrice,        // open price (market price)
-               // support - (0.5 * riskMargin),         // stop loss
-               // MathMax(bidPrice - workingRiskMargin, sl),
                sl,
                tp,         // take profit
                "Sell Order");//
@@ -770,7 +753,7 @@ if ((ENUM_DEAL_REASON)reason == DEAL_REASON_SL)
 
    string positionSide = (dealType == DEAL_TYPE_SELL) ? "BUY" : "SELL";
 
-   Print("🔻 Stop Loss hit for a ", positionSide, " position!");
+   Print("Stop Loss hit for a ", positionSide, " position!");
 
    // Do your SL logic
    Alert("Stop Loss activation for a " + positionSide + " position");

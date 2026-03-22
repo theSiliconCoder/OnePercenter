@@ -65,7 +65,6 @@ void runDipBuyer()
 void initDipBuyer()
   {
    dipBuyerInit = true;
-//barsSinceLastAttempt = 0;
 
    ArraySetAsSeries(candleArr, true);
    barsTotal = Bars(_Symbol,PERIOD_H4);
@@ -78,10 +77,6 @@ void initDipBuyer()
    maxHigh = iHigh(_Symbol, PERIOD_H4, maxHiCndl);
    minLow = iLow(_Symbol, PERIOD_H4, minLoCndl);
 
-
-//entryPrice = maxHigh - ((maxHigh - minLow) * 0.65);
-
-//executeBuyLimit(entryPrice, minLow, maxHigh, false);
   }
 
 
@@ -142,14 +137,12 @@ void monitorChart()
                if(OrdersTotal() == 0 && PositionsTotal()==0)
                  {
                   // look for opportunity to place new order: dipBuyerInit = false;
-                  //barsSinceLastAttempt++;
-                  //if (barsSinceLastAttempt >= 5)
+                  // barsSinceLastAttempt++;
+                  // if (barsSinceLastAttempt >= 5)
                   dipBuyerInit = false; // redeploy dipBuyer algo
 
                  }
 
-         // else update position
-         //else positionMonitor(true, minLow,maxHigh);
 
         }
 
@@ -214,15 +207,6 @@ void executeBuyLimit(double price, double sl, double tp, bool update)
 
 bool isUniqueOrder(ENUM_ORDER_TYPE orderType, double orderPrice){
 
-  /*
-  for (int i = 0; i < OrdersTotal(); ++i){
-    ulong currOrder = OrderGetTicket(i);
-
-    if ( OrderGetInteger(ORDER_TYPE) == orderType && OrderGetDouble(ORDER_PRICE_OPEN) == orderPrice) return false;
-  }
-
-  return true;
-  */
  for (int i = 0; i < OrdersTotal(); ++i)
    {
     ulong currOrder = OrderGetTicket(i);
@@ -268,12 +252,7 @@ void closeAllOrdersandPositions()
 
       ulong currPos = PositionGetTicket(i);
 
-      // if(PositionGetInteger(POSITION_TYPE) == POSITION_TYPE_BUY)
-      //   {
-
          trade.PositionClose(currPos); // close position
-
-       // }
 
      }
   }
