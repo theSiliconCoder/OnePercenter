@@ -379,14 +379,6 @@ void signalGen (SweepData &sweepData){
   
 
 //    #UPTREND
-// - checkActiveKillZone : LN
-// - getSessionData(AS) : AS-Low 
-// - checkLowestLow(now and AsianEndTime(not-inclusive)) : Low 
-// - if LowestLow < AS-Low 
-//    - if checkForBreakout(Bullish BO) == true 
-//       - fire buy signal, supply LowestLow as stop 
-
-   // Print("Latest Sweep is Low? : ",sweepData.latestSweepIsLow);
 
    for(int i = 0; i < ArraySize(zonesProfitableToday); i++){
       
@@ -941,10 +933,7 @@ double getStopPrice(bool isBuyOrder, ENUM_TIMEFRAMES tf, double atrValue){
 
    double risk = isBuyOrder ? openPrice - peakOrDipPrice : openPrice + peakOrDipPrice;
 
-   // if(risk > maxRisk){
-   //     Print("Trade INVALID: Risk too High!");
-   //     return -1;
-   // }
+
 
    return peakOrDipPrice; // return calculated and safe sl
 }

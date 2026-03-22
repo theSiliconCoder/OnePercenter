@@ -75,10 +75,6 @@ SweepData gSweepData;
 void OnTick()
    {
     
-      
-      
-      
-
       // if (!inPosition) signalGen(gSweepData);
 
       if(PositionsTotal()) {
@@ -111,20 +107,20 @@ void OnTick()
             Print("Reset Signal Count Today to: ", signalCntToday);
          }
 
-         // if(marketTypeArrSize >= 3) {
-         //    marketTypeArrSize = 0;
-         //    if(marketTypeFilter[0] == TRENDING_VOLATILE 
-         //       && marketTypeFilter[1] == TRENDING_VOLATILE 
-         //       && marketTypeFilter[2] == TRENDING_VOLATILE
-         //    ){
-         //       isTrendingMarket = true;
-         //       Print("Market Trending");
-         //    }else {
-         //       isTrendingMarket = false;
-         //       Print("Market NOT Trending");
-         //    }
-         // }
-         // else marketTypeFilter[marketTypeArrSize++] = ClassifyMarket();
+         if(marketTypeArrSize >= 3) {
+            marketTypeArrSize = 0;
+            if(marketTypeFilter[0] == TRENDING_VOLATILE 
+               && marketTypeFilter[1] == TRENDING_VOLATILE 
+               && marketTypeFilter[2] == TRENDING_VOLATILE
+            ){
+               isTrendingMarket = true;
+               Print("Market Trending");
+            }else {
+               isTrendingMarket = false;
+               Print("Market NOT Trending");
+            }
+         }
+         else marketTypeFilter[marketTypeArrSize++] = ClassifyMarket();
          
          
       }
@@ -141,11 +137,6 @@ void onNewBar(){
    }
 
    Print("New Hour Bar, UTC + 1 TIME: ", GetCurrentHour());
-
-   // if (GetCurrentHour() == 19 && PositionsTotal()) {
-   //    closeAllPositions(POSITION_TYPE_BUY);
-   //    closeAllPositions(POSITION_TYPE_SELL);
-   //  }
 
 }
 

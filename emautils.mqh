@@ -75,7 +75,6 @@ void initEma(){
 
 void checkForTrade(StrategyConfig &sConfig){
 
-   
 
    // Get latest values (shift 1 = last closed candle)
    if(CopyBuffer(handleEMAfast, 0, 0, 14, emaFast) <= 0) return;
@@ -128,10 +127,6 @@ void checkForTrade(StrategyConfig &sConfig){
       if(countPositions(POSITION_TYPE_BUY) <= 0){
          Print("BUY Signal: EMA5=", emaFastVal, " | EMA9=", emaMidVal, " | EMA50=", emaSlowVal);
          // open buy
-         
-         // double riskMargin = 0.0050;
-         // double openPrice = NormalizeDouble(SymbolInfoDouble(_Symbol, SYMBOL_BID), _Digits);
-         // double sl = openPrice - riskMargin;
 
          double sl = getStopPrice(true, timeFrameMain, atrValue[1]);
          if(sl == -1) return;
@@ -150,14 +145,7 @@ void checkForTrade(StrategyConfig &sConfig){
    } else {
 
       if(inPosition && barsCntSoFar >= 2){
-         // bool exitPos = isMomentumLow(POSITION_TYPE_BUY, emaFast);
-
-         // if(exitPos && countPositions(POSITION_TYPE_BUY) >= 0){
-         //    // close existing BUY
-         //    closeAllPositions(POSITION_TYPE_BUY);
-         //    positionClosedFlag = true;
-         // }
-
+         
          if(isBreakEvenTriggered){
             checkFor5_9Crossing(false);
 
@@ -212,24 +200,9 @@ void checkForTrade(StrategyConfig &sConfig){
       
    }else {
 
-      // if ((emaMidVal - emaFastVal) < atrThreshold) {
-      //    Print("EMA 9 -5 less than atrthreshold: EMA 9 - 5= ", emaMidVal - emaFastVal, " | Threshold ", atrThreshold);
-      //    return;
-      // }
-
-      // if ((emaSlowVal - emaMidVal) <= atrValue[0]*0.6) {
-      //    Print("EMA 50-9 lessthn/equal to atrthreshold: EMA 50- 9= ", emaSlowVal - emaMidVal, " | Threshold ", atrValue[0]*0.6);
-      //    return;
-      // }
 
       if(inPosition && barsCntSoFar >= 2){
-         // bool exitPos = isMomentumLow(POSITION_TYPE_BUY, emaFast);
-
-         // if(exitPos && countPositions(POSITION_TYPE_BUY) >= 0){
-         //    // close existing BUY
-         //    closeAllPositions(POSITION_TYPE_BUY);
-         //    positionClosedFlag = true;
-         // }
+   
 
          if(isBreakEvenTriggered){
              checkFor5_9Crossing(false);

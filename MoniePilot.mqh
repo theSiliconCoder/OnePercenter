@@ -164,4 +164,3 @@ public:
 
 };
 
-//MoniePilot::Indicators::Supertrend::Supertrend(ENUM_TIMEFRAMES _timeFrame) : timeFrame(_timeFrame){};
