@@ -9,7 +9,7 @@ This project implements a **market-aware trading strategy in MetaTrader 5 (MQL5)
 - Market regime classification
 - Configurable entry validation pipeline
 
-While the current implementation executes **directional trades**, the architecture is designed with a **market-making mindset** — focusing on _when to participate_, _when to stay out_, and _how to adapt to changing market conditions_.
+While the current implementation executes **directional trades**, the architecture is designed with a **market-making mindset**, focusing on _when to participate_, _when to stay out_, and _how to adapt to changing market conditions_.
 
 ---
 
